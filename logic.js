@@ -15,13 +15,14 @@ $(document).ready(function(){
 
     //forecast tab butons
     $('.forecastButton').click(function(){
-      console.log('clicked');
-      $('.active').removeClass('active');
-      $(this).addClass('active');
-      $('.todayForecast').toggleClass('hidden');
-      $('.weeklyForecast').toggleClass('hidden');
-  //    $('.todayForecast').toggleClass('hidden');
-
+      var isActive = $(this).hasClass('active');
+      if(!isActive){
+        $('.active').removeClass('active');
+        $(this).addClass('active');
+        $('.todayForecast').toggleClass('hidden');
+        $('.weeklyForecast').toggleClass('hidden');
+    //    $('.todayForecast').toggleClass('hidden');
+      };
     })
 
 

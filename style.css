@@ -57,6 +57,11 @@ body {
   font-style: italic;
 }
 
+.currentInfo{
+  display: flex;
+  flex-direction: column;
+}
+
 
 /*Stats Div*/
 
@@ -94,7 +99,7 @@ body {
   height: 50vh;
 }
 
-/*hourly forecast rows */
+/*hourly and weekly forecast rows */
 .todayForecast{
   display: flex;
   flex-direction: column;
@@ -107,6 +112,10 @@ display: flex;
 justify-content: space-between;
 padding: 14px;
 
+}
+
+.day, .hourlyTime {
+  padding-right: 20px;
 }
 
 /*forecast nav */
@@ -156,7 +165,19 @@ li a:hover:not(.active) {
     height: auto;
   }
   .currentDay {
-    width: 90%;
+    width: 85%;
+    display:flex;
+    flex-direction: row ;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 60px;
+  }
+  .currentDate {
+    width: 30%;
+  }
+
+  .currentInfo {
+    align-self: flex-end;
   }
   .info {
     width: 90%;
@@ -169,5 +190,56 @@ li a:hover:not(.active) {
 
   #stats-header, .forecasts{
     width: 98%;
+  }
+}
+
+@media only screen and (max-width : 1200px) {
+  .container{
+    flex-direction: column;
+    height: auto;
+    width: 97vw;
+  }
+  .currentDay {
+    width: 85%;
+    display:flex;
+    flex-direction: row ;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 60px;
+  }
+  .currentDate {
+    width: 30%;
+  }
+
+  .currentInfo {
+    align-self: flex-end;
+  }
+  .info {
+    width: 90%;
+  }
+
+  .forecasts {
+    height: auto;
+    margin-top: 70px;
+  }
+
+  #stats-header, .forecasts{
+    width: 98%;
+  }
+}
+
+@media only screen and (max-width : 500px){
+  .currentDay {
+    padding: 22px;
+  }
+  .stats .col {
+    font-size: 150%;
+  }
+
+  .weeklyForecast{
+    font-size: 70%;
+  }
+  .day, .hourlyTime {
+    padding-right: 5px;
   }
 }
