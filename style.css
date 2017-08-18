@@ -3,6 +3,8 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+/*LETS DO GRID*/
+
 .container {
   width: 100%;
   display: flex;
