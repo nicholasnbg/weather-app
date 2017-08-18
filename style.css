@@ -1,14 +1,20 @@
 body {
   font-size: 20px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Raleway', Helvetica, sans-serif;
+  height: 98vh;
+  width: 98vw;
 }
 
 /*LETS DO GRID*/
 
 .container {
   width: 100%;
-  display: flex;
-  height: 98vh;
+  display: grid;
+  height: 100%;
+  grid-template:
+  "currentDay stats" 50fr
+  "currentDay forecast" 50fr
+  / 33fr 67fr;
 }
 
 .col{
@@ -23,7 +29,7 @@ body {
 
 /*CURRENT DAY DIV*/
 .currentDay {
-  width:33%;
+  grid-area: currentDay;
   background: -moz-linear-gradient(45deg, rgba(255,194,38,1) 0%, rgba(255,194,38,1) 6%, rgba(227,54,204,1) 100%); /* ff3.6+ */
   background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255,194,38,1)), color-stop(6%, rgba(255,194,38,1)), color-stop(100%, rgba(227,54,204,1))); /* safari4+,chrome */
   background: -webkit-linear-gradient(45deg, rgba(255,194,38,1) 0%, rgba(255,194,38,1) 6%, rgba(227,54,204,1) 100%); /* safari5.1+,chrome10+ */
@@ -67,27 +73,31 @@ body {
 
 /*Stats Div*/
 
-.info {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width:66%;
-}
 
-.stats {
-  display: flex;
-  justify-content: space-around;
-  padding-top: 30px;
+
+.stats-cont {
+  height: auto;
+  width: 100%;
+  display: grid;
+  grid-template:
+  "header" 1fr
+  "stats"  4fr
+  / 1fr;
 }
 
 #stats-header{
   border-bottom: grey  1px solid;
   width:90%;
   margin-left: 5%;
+  grid-area: header;
 }
 
-.stats-cont {
-  height: 50vh;
+.stats {
+  grid-area: stats;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 30px;
 }
 
 .stats .col {
@@ -98,14 +108,27 @@ body {
 .forecasts {
   width: 90%;
   margin-left: 5%;
-  height: 50vh;
+  grid-area: forecast;
+  height: 100%;
+  display: grid;
+  grid-template:
+  "nav" 1fr
+  "forecast-info" 4fr
+  / 100fr;
+
 }
 
 /*hourly and weekly forecast rows */
 .todayForecast{
   display: flex;
   flex-direction: column;
-  height: auto;
+  justify-content: space-around;
+}
+
+.weeklyForecast {
+  height: 100fr;
+  display: flex;
+  flex-direction: column;
   justify-content: space-around;
 }
 
@@ -122,8 +145,9 @@ padding: 14px;
 
 /*forecast nav */
 nav {
+  grid-area: nav;
   margin-bottom: 25px;
-  border-bottom: grey 1px solid;
+
 }
 
 ul {
@@ -131,6 +155,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    border-bottom: grey 1px solid;
 }
 
 li {
@@ -161,87 +186,20 @@ li a:hover:not(.active) {
 
 
 /*MEDIA QUERIES */
-@media only screen and (max-height : 700px) {
-  .container{
-    flex-direction: column;
+@media only screen and (max-width: 800px){
+  body {
     height: auto;
-  }
-  .currentDay {
-    width: 85%;
-    display:flex;
-    flex-direction: row ;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 60px;
-  }
-  .currentDate {
-    width: 30%;
+    font-size: 17px;
   }
 
-  .currentInfo {
-    align-self: flex-end;
-  }
-  .info {
-    width: 90%;
-  }
-
-  .forecasts {
-    height: auto;
-    margin-top: 70px;
-  }
-
-  #stats-header, .forecasts{
-    width: 98%;
-  }
-}
-
-@media only screen and (max-width : 1200px) {
-  .container{
-    flex-direction: column;
-    height: auto;
-    width: 97vw;
-  }
-  .currentDay {
-    width: 85%;
-    display:flex;
-    flex-direction: row ;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 60px;
-  }
-  .currentDate {
-    width: 30%;
-  }
-
-  .currentInfo {
-    align-self: flex-end;
-  }
-  .info {
-    width: 90%;
-  }
-
-  .forecasts {
-    height: auto;
-    margin-top: 70px;
-  }
-
-  #stats-header, .forecasts{
-    width: 98%;
-  }
-}
-
-@media only screen and (max-width : 500px){
-  .currentDay {
-    padding: 22px;
-  }
-  .stats .col {
-    font-size: 150%;
-  }
-
-  .weeklyForecast{
-    font-size: 70%;
-  }
-  .day, .hourlyTime {
-    padding-right: 5px;
+  .container {
+    width: 100%;
+    display: grid;
+    height: 100%;
+    grid-template:
+    "currentDay" auto
+    "stats" auto
+    "forecast" auto
+    / 100fr;
   }
 }
