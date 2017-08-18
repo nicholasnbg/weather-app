@@ -186,7 +186,7 @@ li a:hover:not(.active) {
 
 
 /*MEDIA QUERIES */
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 1000px){
   body {
     height: auto;
     font-size: 17px;
@@ -201,5 +201,9 @@ li a:hover:not(.active) {
     "stats" auto
     "forecast" auto
     / 100fr;
+  }
+
+  .dayTemp {
+    margin-left: 10px;
   }
 }
